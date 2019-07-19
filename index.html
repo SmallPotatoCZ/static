@@ -55,7 +55,7 @@
             esl_list[key][size].forEach(v => {
                 let imgunit = `
                     <div class="card">
-                        <img src="media/${key}/${size}/small/${v.replace(/\.[a-zA-Z0-9]{3,4}$/, "")}-small${v.match(/\.[a-zA-Z0-9]{3,4}$/)[0]}" alt="${key} - ${size}">
+                        <img src="media/${key}/${size}/small/${v.replace(/\.[a-zA-Z0-9]{3,4}$/, "")}${v.match(/\.[a-zA-Z0-9]{3,4}$/)[0]}" alt="${key} - ${size}">
                         <div><a href="#" onclick="(function (){window.navigator.clipboard.writeText(window.location.origin + '/media/' + '${key}/${size}/${v}' )}())">链接</a><a href="media/${key}/${size}/${v}" download>下载</a>
                         </div>
                     </div>
