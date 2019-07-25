@@ -8,4 +8,7 @@ list:
 convert:
 	@source scripts/convertimg.sh
 
-.PHONY: list convert
+add:
+	@source scripts/generateImgs.sh
+
+.PHONY: list convert add

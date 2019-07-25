@@ -2,20 +2,18 @@
 
 target=./data/list.js
 
-echo "var esl_list = {" > $target
+echo "var esl_list = {" >$target
 
-for type in $( ls media ); do
-    echo "\"$type\":{" >> $target
-    for size in $( ls media/$type ); do
-        echo "\"$size\":[" >> $target
-        for file in $( ls media/$type/$size ); do
-            if [[ -f media/$type/$size/$file ]]; then 
-                echo "\"$file\"," >> $target
-            fi
-        done 
-        echo "]" >> $target
+for type in $(find media/ -mindepth 1 -maxdepth 1 -type d); do
+    echo "\"$(basename $type)\":{" >>$target
+    for size in $(find $type -mindepth 1 -maxdepth 1 -type d); do
+        echo "\"$(basename $size)\":[" >>$target
+        for file in $(find $size -mindepth 1 -maxdepth 1 -type f -name "*.jpg" -o -name "*.png"); do
+            echo "\"$(basename $file)\"," >>$target
+        done
+        echo "]," >>$target
     done
-    echo "}," >> $target
+    echo "}," >>$target
 done
 
-echo "};" >> $target
+echo "};" >>$target

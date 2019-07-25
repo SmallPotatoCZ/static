@@ -51,7 +51,7 @@
 <script>
     for (let key in esl_list) {
         for (let size in esl_list[key]) {
-            document.body.insertAdjacentHTML("beforeend", `<h2>${key} - ${size}</h2><div class="box ${key}"></div>`);
+            let boxCnt = `<h2>${key} - ${size}</h2><div class="box ${key}">`;
             esl_list[key][size].forEach(v => {
                 let imgunit = `
                     <div class="card">
@@ -60,8 +60,10 @@
                         </div>
                     </div>
                     `;
-                document.body.querySelector(`.${key}`).insertAdjacentHTML("beforeend", imgunit);
+                boxCnt += imgunit;
             });
+            boxCnt += '</div>';
+            document.body.insertAdjacentHTML("beforeend", boxCnt);
         }
     }
 </script>
